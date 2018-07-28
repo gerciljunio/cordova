@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 import Vue from 'vue'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 import Vuetify from 'vuetify'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 
