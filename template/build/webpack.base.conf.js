@@ -10,6 +10,7 @@ function resolve (dir) {
 }
 
 module.exports = {
+  performance: { hints: false },
   entry: {
     app: ['babel-polyfill','./src/main.js']
   },
