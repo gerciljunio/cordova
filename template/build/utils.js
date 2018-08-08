@@ -1,6 +1,6 @@
 var path = require('path')
 var config = require('../config')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var MiniCSSExtractPlugin = require('mini-css-extract-plugin')
 
 exports.assetsPath = function (_path) {
   var assetsSubDirectory = process.env.NODE_ENV === 'production'
@@ -10,49 +10,44 @@ exports.assetsPath = function (_path) {
 }
 
 exports.cssLoaders = function (options) {
-  options = options || {}
-
-  var cssLoader = {
-    loader: 'css-loader',
-    options: {
-      minimize: process.env.NODE_ENV === 'production',
-      sourceMap: options.sourceMap
-    }
-  }
-
   // generate loader string to be used with extract text plugin
-  function generateLoaders (loader, loaderOptions) {
-    var loaders = [cssLoader]
-    if (loader) {
-      loaders.push({
-        loader: loader + '-loader',
-        options: Object.assign({}, loaderOptions, {
-          sourceMap: options.sourceMap
-        })
+  function generateLoaders (loaders, loaderOptions) {
+    var styleLoader = []
+    // If typeof "loaders" is object and also is an array
+    if (typeof loaders === 'object' && Array.isArray(loaders)) {
+      loaders.forEach(function(element) {
+        if (typeof element === 'object' && !Array.isArray(element)) {
+          styleLoader.push({
+            loader: element.loader,
+            options: Object.assign({}, element.options) || {}
+          })
+        } else if (typeof element === 'string') {
+          styleLoader.push(element)
+        }
+      });
+    // If typeof "loaders" is object and is not an array 
+    } else if (typeof loaders === 'object' && !Array.isArray(loaders)) {
+      styleLoader.push({
+        loader: loaders.loader,
+        options: Object.assign({}, loaders.options) || {}
       })
+    // If typeof "loaders" is string
+    } else if (typeof loaders === 'string') {
+      styleLoader.push(loaders)
     }
-
-    // Extract CSS when that option is specified
-    // (which is the case during production build)
-    if (options.extract) {
-      return ExtractTextPlugin.extract({
-        use: loaders,
-        fallback: 'vue-style-loader'
-      })
-    } else {
-      return ['vue-style-loader'].concat(loaders)
-    }
+    return styleLoader
   }
 
   // https://vue-loader.vuejs.org/en/configurations/extract-css.html
-  return {
-    css: generateLoaders(),
-    postcss: generateLoaders(),
-    less: generateLoaders('less'),
-    sass: generateLoaders('sass', { indentedSyntax: true }),
-    scss: generateLoaders('sass'),
-    stylus: generateLoaders('stylus'),
-    styl: generateLoaders('stylus')
+
+   return {
+    css: generateLoaders([(process.env.NODE_ENV !== 'production' ? 'vue-style-loader' : MiniCSSExtractPlugin.loader), 'css-loader']),
+    postcss: generateLoaders(['vue-style-loader', { loader: 'css-loader', options: { importLoaders: 1 } }, 'postcss-loader']),
+    less: generateLoaders(['vue-style-loader', 'css-loader', 'less-loader']),
+    sass: generateLoaders(['vue-style-loader','css-loader', { loader: 'sass-loader', options: { indentedSyntax: true } }]),
+    scss: generateLoaders(['vue-style-loader','css-loader', { loader: 'sass-loader', options: { indentedSyntax: true } }]),
+    stylus: generateLoaders(['vue-style-loader', 'css-loader', 'stylus-loader']),
+    styl: generateLoaders(['vue-style-loader', 'css-loader', 'stylus-loader'])
   }
 }
 
