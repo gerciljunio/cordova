@@ -1,0 +1,25 @@
+{
+	"locale": {
+		"ios": ["en"],
+		"android": ["en"]
+	},
+	"config_ios" : {
+		"NSCameraUsageDescription": "This app requires camera access to function properly",
+		"NSLocationWhenInUseUsageDescription": "This app requires access to your location for navigation purposes",
+		"NSLocationAlwaysAndWhenInUseUsageDescription": "This app requires constant access to your location in order to track your position, even when the screen is off or the app is in the background",
+		"NSLocationAlwaysUsageDescription": "This app requires constant access to your location in order to track your position, even when the screen is off or the app is in the background",
+		"NSContactsUsageDescription": "This app requires contacts access to function properly",
+		"NSMicrophoneUsageDescription": "This application requires access to your microphone",
+		"NSPhotoLibraryUsageDescriptionentry": "This app requires access to your photo library",
+		"Photo Album": "Photo Gallery",
+		"Camera": "Camera",
+		"Cancel": "Cancel"
+	},
+	"config_android" : {
+		"crop__saving": "Saving image...",
+		"crop__wait": "Please, wait...",
+		"crop__pick_error": "No image sources available",
+		"crop__done": "DONE",
+		"crop__cancel": "CANCEL"
+	}
+}
