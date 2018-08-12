@@ -79,6 +79,8 @@
   import Hello from '@/components/Hello'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
   {{/unless}}
   import Vue from 'vue'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+  import {deviceTools} from './mixins/deviceTools'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+
   export default {
     data{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}() {
       return {
@@ -104,6 +106,7 @@
         self.onDeviceReady(){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
       }){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
     },
+    mixins: [deviceTools],
     methods: {
       onDeviceReady: function () {
         // Handle the device ready event.
@@ -113,35 +116,8 @@
           document.addEventListener('backbutton', this.onBackKeyDown, false){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
         }{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 
-
-        if(this.cordova && process.env.NODE_ENV == 'prod') {
-            if(this.cordova.device && this.cordova.device.platform && this.cordova.device.platform.toLowerCase() == 'ios') {
-              if(this.cordova.device.model == 'iPhone10,3' || this.cordova.device.model == 'iPhone10,6' || this.cordova.device.model == 'x86_64') {
-
-                // Configurações de statusbar
-                if(typeof(StatusBar) !== 'undefined') {
-                  // Coloca a statusbar padrão
-                  StatusBar.styleDefault();
-
-                  // Mostra satusbar
-                  StatusBar.show();
-                  StatusBar.overlaysWebView(false);
-
-                  // Executa novamente
-                  setTimeout(function() {
-                    StatusBar.show();
-                    StatusBar.overlaysWebView(false);
-                  }, 2000)
-
-                }
-
-              }
-            }
-        }
-
-
-
-
+        // Mixin deviceTools
+        this.defineStatusBar(){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
       },
       onPause () {
         // Handle the pause lifecycle event.
