@@ -14,6 +14,16 @@ import router from './router'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{/router}}
 
 Vue.use(Vuetify){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+// import colors from 'vuetify/es5/util/colors'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+// Vue.use(Vuetify, {
+//   theme: {
+//     primary: colors.red.lighten1,
+//     secondary: colors.red.lighten4,
+//     accent: colors.indigo.base
+//   }
+// })
+
+
 Vue.config.productionTip = false{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 Vue.use(VueCordova){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 Vue.use(VueHead){{#if_eq lintConfig "airbnb"}};{{/if_eq}}

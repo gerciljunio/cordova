@@ -1,5 +1,10 @@
 export const deviceTools = {
 	methods: {
+		
+		/**
+		 * Define regras de statusbar em geral
+		 * @return {void}
+		 */
 		defineStatusBar: function () {
 			if(window.cordova && process.env.NODE_ENV == 'prod') {
 		  		if(window.device && window.device.platform && window.device.platform.toLowerCase() == 'ios') {
