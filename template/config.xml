@@ -31,7 +31,7 @@
         <preference name="android-minSdkVersion" value="19" />
         <preference name="KeyboardDisplayRequiresUserAction" value="true" />
         <edit-config file="AndroidManifest.xml" mode="merge" target="/manifest/application/activity[@android:name='MainActivity']">
-            <activity android:windowSoftInputMode="adjustNothing" />
+            <activity android:windowSoftInputMode="adjustPan" />
         </edit-config>
     </platform>
     <platform name="ios">

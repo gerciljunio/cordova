@@ -118,6 +118,9 @@
 
         // Mixin deviceTools
         this.defineStatusBar(){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+
+        // Mixin Adapt Keyboard Input Focus Android
+        this.keyboardAdapt(){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
       },
       onPause () {
         // Handle the pause lifecycle event.

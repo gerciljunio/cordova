@@ -20,6 +20,8 @@
   },
   "dependencies": {
     "@sinonjs/formatio": "^2.0.0",
+    "axios": "^0.18.0",
+    "vue-i18n": "^8.0.0",
     "vue": "^2.5.17",
     {{#router}}
     "vue-router": "^3.0.1",
