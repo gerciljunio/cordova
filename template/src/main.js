@@ -13,6 +13,8 @@ import App from './App'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 import router from './router'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{/router}}
 
+import './assets/stylus-overrides.styl'
+
 Vue.use(Vuetify){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 Vue.config.productionTip = false{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 Vue.use(VueCordova){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
