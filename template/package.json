@@ -28,6 +28,8 @@
     "vue-cordova": "^0.1.2",
     "vue-head": "^2.0.12",
     "cordova-plugin-device": "^2.0.2",
+    "mini-css-extract-plugin": "^0.4.1",
+    "postcss-safe-parser": "^4.0.1",
     {{#lint}}
     {{#if_eq lintConfig "standard"}}
     "eslint-plugin-import": "^2.12.0",
