@@ -1,3 +1,7 @@
+# DEPRECATED
+
+Please use the [Vuetify CLI 3.x](https://github.com/vuetifyjs/vue-cli-plugin-vuetify) plugin, and follow the instructions there to add cordova functionality.
+
 # vue-pwa-cordova-boilerplate
 
 > A full-featured [PWA](https://developers.google.com/web/progressive-web-apps/) template with webpack, hot-reload, lint-on-save, unit testing & css extraction, that is wrapped in a cordova project.
