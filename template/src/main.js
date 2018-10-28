@@ -28,7 +28,6 @@ import App from './App'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 import router from './router'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{/router}}
 
-
 import pt from './locale/pt'
 import en from './locale/en'
 import es from './locale/es'
@@ -62,6 +61,9 @@ Vue.use(Vuetify, {
 })
 
 
+import './assets/stylus-overrides.styl'
+
+Vue.use(Vuetify){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 Vue.config.productionTip = false{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 Vue.use(VueCordova){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 Vue.use(VueHead){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
