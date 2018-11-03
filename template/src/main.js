@@ -51,9 +51,13 @@ window.i18n = new VueI18n({
 import colors from 'vuetify/es5/util/colors'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 Vue.use(Vuetify, {
   theme: {
-    primary: colors.red.lighten1,
-    secondary: colors.red.lighten4,
-    accent: colors.indigo.base
+    primary: colors.deepPurple.darken1,
+    secondary: colors.deepPurple.darken4,
+    accent: colors.deepPurple.darken1,
+    error: colors.red.base,
+    warning: colors.yellow.base,
+    info: colors.blue.base,
+    success: colors.green.base
   },
   lang: {
     t: (key, ...params) => i18n.t(key, params)
