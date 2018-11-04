@@ -2,11 +2,19 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 {{/if_eq}}
+import '@fortawesome/fontawesome-free/css/all.css'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+window.CircularJSON = require('circular-json'){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 import Vue from 'vue'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 import Vuetify from 'vuetify'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 import 'vuetify/dist/vuetify.css'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 import VueCordova from 'vue-cordova'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 import VueHead from 'vue-head'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+window.$ = require('jquery'){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+
+import VueLocalStorage from 'vue-localstorage'
+Vue.use(VueLocalStorage, {
+  name: 'ls',
+})
 
 
 import VueI18n from 'vue-i18n'
@@ -82,6 +90,7 @@ if (window.location.protocol === 'file:' || window.location.port === '3000') {
 
 
 import {localeTools} from './mixins/localeTools'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+import {authTools} from './mixins/authTools'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 
 
 /* eslint-disable no-new */
@@ -91,7 +100,7 @@ new Vue({
   {{#router}}
   router,
   {{/router}}
-  mixins: [localeTools],
+  mixins: [localeTools, authTools],
   {{#if_eq build "runtime"}}
   render: h => h(App){{#if_eq lintConfig "airbnb"}},{{/if_eq}}
   {{/if_eq}}

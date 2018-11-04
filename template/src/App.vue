@@ -150,4 +150,11 @@
     margin-bottom: constant(safe-area-inset-bottom);
     margin-bottom: env(safe-area-inset-bottom);
   }
+
+  .v-messages__message {
+    margin-bottom: 7px !important;
+  }
+  .v-text-field__details {
+    padding-left: 0 !important;
+  }
 </style>

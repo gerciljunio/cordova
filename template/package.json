@@ -21,8 +21,11 @@
   "dependencies": {
     "@sinonjs/formatio": "^2.0.0",
     "axios": "^0.18.0",
+    "circular-json": "^0.5.9",
     "vue-i18n": "^8.0.0",
     "vue": "^2.5.17",
+    "jquery": "^3.3.1",
+    "vue-localstorage": "^0.6.2",
     {{#router}}
     "vue-router": "^3.0.1",
     {{/router}}
@@ -31,6 +34,7 @@
     "vue-head": "^2.0.12",
     "cordova-plugin-device": "^2.0.2",
     "mini-css-extract-plugin": "^0.4.1",
+    "postcss-merge-rules": "^4.0.2",
     "postcss-safe-parser": "^4.0.1",
     {{#lint}}
     {{#if_eq lintConfig "standard"}}
@@ -41,6 +45,7 @@
     "uuid": "^3.2.1"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.5.0",
     "autoprefixer": "^8.5.0",
     "babel-core": "^6.26.3",
     "sw-precache-webpack-plugin": "^0.11.5",
@@ -57,7 +62,7 @@
     "connect-history-api-fallback": "^1.5.0",
     "copy-webpack-plugin": "^4.5.1",
     "css-loader": "^0.28.11",
-    "cssnano": "^3.10.0",
+    "cssnano": "^4.1.7",
     {{#lint}}
     "eslint": "^4.19.1",
     "eslint-friendly-formatter": "^4.0.1",
@@ -113,7 +118,7 @@
     "semver": "^5.5.0",
     "shelljs": "^0.8.2",
     "opn": "^5.3.0",
-    "optimize-css-assets-webpack-plugin": "^4.0.1",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
     "ora": "^2.1.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",

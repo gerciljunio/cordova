@@ -3,7 +3,7 @@
 <script>
 export default {
   beforeCreate() {
-    // this.$router.push({ name: 'Signs' })
+    this.$router.push({ name: 'Signs' })
     // por verificar se está logado, etc
   },
 };

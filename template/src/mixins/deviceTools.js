@@ -45,7 +45,7 @@ export const deviceTools = {
 
 			  	window.addEventListener('keyboardDidHide', function (e) {
 				    setTimeout(function() {
-						$('.content-app').css('padding-bottom', '0')
+						$('.application--wrap').css('padding-bottom', '0')
 						$('.modal-card-body').each(function() {
 							$(this).css('padding-bottom', '20px')
 						})
@@ -57,7 +57,7 @@ export const deviceTools = {
 
 				$(document).on('focus', 'input, textarea', function(e) {
 					setTimeout(function() {
-						$('.content-app').css('padding-bottom', '220px')
+						$('.application--wrap').css('padding-bottom', '220px')
 						$('.modal-card-body').each(function() {
 							$(this).css('padding-bottom', '220px')
 						})
@@ -78,7 +78,7 @@ export const deviceTools = {
 
 				$(document).on('blur', 'input, textarea', function(e) {
 					setTimeout(function() {
-						$('.content-app').css('padding-bottom', '0')
+						$('.application--wrap').css('padding-bottom', '0')
 						$('.modal-card-body').css('padding-bottom', '20px')
 					}, 100)
 				});
