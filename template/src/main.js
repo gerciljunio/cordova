@@ -1,3 +1,15 @@
+window.apirs = require('./router/api')
+
+/**
+ * queryString pack
+ * https://github.com/sindresorhus/query-string
+ * @see  pages/Auth/Login.vue
+ */
+window.queryString = require('query-string');
+window.queryStringUrl = function(url) {
+  return queryString.parse(queryString.extract(url));
+}
+
 {{#if_eq build "standalone"}}
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
@@ -91,6 +103,7 @@ if (window.location.protocol === 'file:' || window.location.port === '3000') {
 
 import {localeTools} from './mixins/localeTools'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 import {authTools} from './mixins/authTools'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+import {httpsRequests} from './mixins/httpsRequests'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 
 
 /* eslint-disable no-new */
@@ -100,13 +113,18 @@ new Vue({
   {{#router}}
   router,
   {{/router}}
-  mixins: [localeTools, authTools],
+  mixins: [localeTools, authTools, httpsRequests],
   {{#if_eq build "runtime"}}
   render: h => h(App){{#if_eq lintConfig "airbnb"}},{{/if_eq}}
   {{/if_eq}}
   {{#if_eq build "standalone"}}
   template: '<App/>',
   components: { App },
+  data () {
+    return {
+      loadingApp: false,
+    }
+  },
   head: {
     meta: [
       {

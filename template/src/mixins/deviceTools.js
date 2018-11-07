@@ -83,6 +83,23 @@ export const deviceTools = {
 					}, 100)
 				});
 			}
+		},
+
+		/**
+		 * Mostra diálog nativo de notificação
+		 * @param  {string} message
+		 * @param  {string} title
+		 * @param  {string} button
+		 * @return {void}
+		 */
+		dialogNotification: function(message, title, button) {
+			var self = this
+			if (typeof(navigator.notification) !== 'undefined') {
+				navigator.notification.alert(message, () => { self.$root.loadingApp = false }, title, button)
+			} else {
+				alert(message)
+				self.$root.loadingApp = false
+			}
 		}
 	}
 };
