@@ -104,6 +104,7 @@ if (window.location.protocol === 'file:' || window.location.port === '3000') {
 import {localeTools} from './mixins/localeTools'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 import {authTools} from './mixins/authTools'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 import {httpsRequests} from './mixins/httpsRequests'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+import {deviceTools} from './mixins/deviceTools'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 
 
 /* eslint-disable no-new */
@@ -113,7 +114,7 @@ new Vue({
   {{#router}}
   router,
   {{/router}}
-  mixins: [localeTools, authTools, httpsRequests],
+  mixins: [localeTools, authTools, httpsRequests, deviceTools],
   {{#if_eq build "runtime"}}
   render: h => h(App){{#if_eq lintConfig "airbnb"}},{{/if_eq}}
   {{/if_eq}}

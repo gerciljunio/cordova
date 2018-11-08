@@ -22,7 +22,6 @@
 
 <script>
   import Vue from 'vue'
-  import {deviceTools} from './mixins/deviceTools'
 
   export default {
     data () {
@@ -36,7 +35,6 @@
         self.onDeviceReady()
       })
     },
-    mixins: [deviceTools],
     methods: {
       onDeviceReady: function () {
         // Handle the device ready event.
@@ -47,10 +45,10 @@
         }
 
         // Mixin deviceTools
-        this.defineStatusBar()
+        this.$root.defineStatusBar()
 
         // Mixin Adapt Keyboard Input Focus Android
-        this.keyboardAdapt()
+        this.$root.keyboardAdapt()
       },
       onPause () {
         // Handle the pause lifecycle event.
@@ -86,5 +84,21 @@
   }
   .v-text-field__details {
     padding-left: 0 !important;
+  }
+
+  * {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  }
+
+  input, textarea {
+  -webkit-user-select: auto !important;
+  -khtml-user-select: auto !important;
+  -moz-user-select: auto !important;
+  -ms-user-select: auto !important;
+  user-select: auto !important;
   }
 </style>

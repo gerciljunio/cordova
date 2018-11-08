@@ -68,6 +68,10 @@
 	// URL de redirecionamento do Facebook
 	const FBRURL = '';
 
+	// Parâmetros customizados para retorno na URL de redirecionamento
+	// https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow/#login
+	const FBSTATE = '';
+
 	export default {
 		data: () => ({
 			emailRules: [
@@ -171,7 +175,7 @@
 					// https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow/
 					// No redirecionamento, pode ser enviado qualquer URL, desde que válida para retorno
 					// Esta rotina, pega somente o access_token na URL independente de qual for a URL
-					var url = encodeURI('https://www.facebook.com/v3.2/dialog/oauth??client_id='+FBCID+'&display=touch&response_type=token&scope=email&redirect_uri='+FBRURL);
+					var url = encodeURI('https://www.facebook.com/v3.2/dialog/oauth?client_id='+FBCID+'&display=touch&state='+FBSTATE+'&response_type=token&scope=email&redirect_uri='+FBRURL);
 
 					// Abre o InAppBrowser
 					var ref = cordova.InAppBrowser.open(url, '_blank', 'location=yes,closebuttoncaption=Fechar');
@@ -182,7 +186,7 @@
 			        	var query = queryStringUrl(e.url);
 			        	
 			        	// Se existir o token do facebook na URL...
-			            if(e.url.indexOf(FBRURL) !== -1 && tpyeof(query.access_token) !== 'undefined' && query.access_token){
+			            if(e.url.indexOf(FBRURL) !== -1 && typeof(query.access_token) !== 'undefined' && query.access_token){
 
 			            	// Salva token no localstorage
 			                self.$ls.set('fbtoken', query.access_token)
@@ -201,12 +205,6 @@
 			               	// Fecha InAppBrowser
 			                ref.close();
 
-			            } else {
-			            	// Fecha InAppBrowser
-			                ref.close();
-
-			                // Mostra mensagem de erro de access_token inexistente
-			                self.$root.dialogNotification('Houve um problema, tente novamente!', 'Erro', 'OK')
 			            }
 
 			        });
