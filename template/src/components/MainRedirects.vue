@@ -3,8 +3,13 @@
 <script>
 export default {
   beforeCreate() {
-    this.$router.push({ name: 'Signs' })
-    // por verificar se está logado, etc
+  	if (typeof(window.appConfig.appId) !== 'undefined' && window.appConfig.appId) {
+  		this.$router.push({ name: 'MainAppHello', params: { id: window.appConfig.appId } })
+  	} else {
+  		this.$router.push({ name: 'MainAppHello' })
+  	}
+    
+    // console.log(this.$root.isLogged())
   },
 };
 </script>

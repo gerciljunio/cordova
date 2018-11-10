@@ -22,5 +22,17 @@ export const authTools = {
 				self.$router.push({ name: 'Signs' })
 			}
 		},
+
+		/**
+		 * Redireciona para login caso não esteja logado
+		 * Normalmente usado no método created da view ou action protegida: self.$root.redirectToLogin()
+		 * @return {void}
+		 */
+		redirectToLogin: function() {
+			var self = this
+			if (!self.$root.isLogged()) {
+				self.$router.push({ name: 'Signs' })
+			}
+		}
 	}
 };

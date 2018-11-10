@@ -100,6 +100,39 @@ export const deviceTools = {
 				alert(message)
 				self.$root.loadingApp = false
 			}
+		},
+
+		/**
+		 * Checa se existe conexão
+		 * @return {void}
+		 */
+		checkConnection: function() {
+			if (typeof(window.cordova) !== 'undefined' && typeof(navigator.connection) !== 'undefined') {
+				var networkState = navigator.connection.type;
+				if (networkState === Connection.NONE) {
+					this.$root.noConnection = true
+				}
+			}
+		},
+
+		/**
+		 * Mostra splash screen
+		 * @return {void}
+		 */
+		showSplash: function() {
+			if (typeof(window.cordova) !== 'undefined'){
+	          navigator.splashscreen.show();
+	        }
+		},
+
+		/**
+		 * Esconde splash screen
+		 * @return {void}
+		 */
+		hideSplash: function() {
+			if (typeof(window.cordova) !== 'undefined'){
+	          navigator.splashscreen.hide();
+	        }
 		}
 	}
 };

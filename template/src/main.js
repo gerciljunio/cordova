@@ -1,4 +1,5 @@
 window.apirs = require('./router/api')
+window.appConfig = require('./config/app')
 
 /**
  * queryString pack
@@ -22,6 +23,9 @@ import 'vuetify/dist/vuetify.css'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 import VueCordova from 'vue-cordova'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 import VueHead from 'vue-head'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 window.$ = require('jquery'){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+
+// Config app in vue app
+Vue.prototype.$appConfig = appConfig;
 
 import VueLocalStorage from 'vue-localstorage'
 Vue.use(VueLocalStorage, {
@@ -124,6 +128,7 @@ new Vue({
   data () {
     return {
       loadingApp: false,
+      noConnection: false
     }
   },
   head: {

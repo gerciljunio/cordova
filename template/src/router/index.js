@@ -1,3 +1,5 @@
+window.appConfig = require('../config/app')
+
 import Vue from 'vue'
 import Router from 'vue-router'
 import MainRedirects from '@/components/MainRedirects'
@@ -8,6 +10,7 @@ import AppHello from '@/components/App/Hello'
 Vue.use(Router)
 
 export default new Router({
+	mode: typeof(window.appConfig.historyMode) !== 'undefined' && window.appConfig.historyMode ? 'history' : '',
 	routes: [
 		{
 			path: '/',
@@ -20,12 +23,12 @@ export default new Router({
 			component: Signs
 		},
 		{
-			path: '/app/',
+			path: typeof(window.appConfig.appId) !== 'undefined' && window.appConfig.appId ? '/app/:id/' : '/app/',
 			component: Main,
 			children: [
 				{
 					path: '/',
-					name: 'AppHello',
+					name: 'MainAppHello',
 					component: AppHello
 				},
 			]

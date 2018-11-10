@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-dialog v-model="$root.loadingApp" :fullscreen="true" hide-overlay persistent :transition="false">
-      <v-card style="background-color:rgba(255, 255, 255, 0.8);">
+      <v-card style="background-color:rgba(255, 255, 255, 0.8); border-radius: 0;">
         <v-card-text class="text-xs-center pt-5">
 
           <v-progress-circular
@@ -11,6 +11,21 @@
           indeterminate
           class="mt-5"
           ></v-progress-circular>
+
+        </v-card-text>
+      </v-card>
+    </v-dialog>
+
+
+    <v-dialog v-model="$root.noConnection" :fullscreen="true" hide-overlay persistent :transition="false">
+      <v-card style="background-color:rgba(255, 255, 255, 1); border-radius: 0;">
+        <v-card-text class="text-xs-center pt-5">
+          
+          <h1 class="mt-5 font-weight-light">
+            <i class="fa fa-wifi fa-3x mb-3"></i>
+            <br>
+            Sem conexão com a internet. Tente novamente!
+          </h1>
 
         </v-card-text>
       </v-card>
@@ -49,6 +64,18 @@
 
         // Mixin Adapt Keyboard Input Focus Android
         this.$root.keyboardAdapt()
+
+        // Mixin search connection on startup
+        this.$root.checkConnection()
+
+        document.addEventListener("offline", () => {
+          this.$root.noConnection = true
+        }, false);
+
+        document.addEventListener("online", () => {
+          this.$root.noConnection = false
+          this.$root.hideSplash()
+        }, false);
       },
       onPause () {
         // Handle the pause lifecycle event.
