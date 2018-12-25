@@ -1,5 +1,5 @@
 module.exports = {
-	historyMode: false,
+	historyMode: typeof(window.cordova) !== 'undefined' ? false : true,
 	appName: '',
 	appDescription: '',
 	appVersion: '100',
